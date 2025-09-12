@@ -48,7 +48,7 @@ public class TaskTest {
         task2.markComplete();
         
         //Assert
-        assertEquals("Task 0: Test the toString() method. | Status: Completed",
+        assertEquals("Task 1: Test the toString() method. | Status: Completed",
              task2.toString());
 
 

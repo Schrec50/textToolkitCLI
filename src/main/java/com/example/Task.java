@@ -20,7 +20,7 @@ public class Task {
     }
 
     public static void resetCounter() {
-        counter = 0; // reset IDs (useful for tests)
+        counter = 1; // reset IDs (useful for tests)
     }
 
     @Override //Need this before every toString()
