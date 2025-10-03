@@ -14,6 +14,12 @@ public class Task {
         this.completed = false;
     }
 
+    public Task(int id, String description, boolean status){
+        this.id = id;
+        this.description = description;
+        this.completed = status;
+    }
+
     //---------------------------------------------------------------------------------
     public void markComplete(){
     this.completed = true;

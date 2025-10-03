@@ -1,5 +1,7 @@
 package com.example;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -8,8 +10,25 @@ import java.util.*;
  */
 public class App {
     public static void main(String[] args) {
+        taskManager manager = new taskManager(); //Creates empty manager
         Scanner k = new Scanner(System.in);
-        taskManager manager = new taskManager();
+
+        try { //Try to load tasks from file
+            manager.loadTasks();
+            if(manager.getSize() > 0){ //If manager size > 0, then successful load
+            System.out.println("Loaded " + manager.getSize() + " tasks from file.\n");
+            
+            } else { //If not then there were no tasks found in the file
+                System.out.println("No tasks found in file. Starting fresh... \n"); //Manager would be empty regardless, so, fresh start.
+            }
+        } catch (Exception e){
+            System.out.println("No previous tasks file found. Starting fresh...\n");//No file was found so continue on with empty manager.
+        }
+
+        
+
+        
+
         int option = 0;
         String task;
         int taskID;
@@ -56,7 +75,6 @@ public class App {
                     System.out.print("Please enter the ID of the task you would like to remove: ");
                     k.nextLine();
 
-
                     taskID = -1;
                     while (!k.hasNextInt()) {
                         System.out.print("Please enter a valid numbered Task ID: ");
@@ -88,8 +106,8 @@ public class App {
                     break;
 
                 case 5:
-                    System.out.println("Exiting Task Manager. Goodbye!");
-
+                    System.out.println("Exiting Task Manager and saving. Goodbye!");
+                    manager.saveTasks();
                     break;
 
                 default:
